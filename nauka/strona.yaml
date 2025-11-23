@@ -13,9 +13,9 @@ data:
         <title>Jacek | DevOps Engineer Portfolio</title>
         <style>
             :root {
-                --bg-color: #f3f4f6;
-                --card-bg: #ffffff;
-                --text-main: #1f2937;
+                --bg-color: #111827;
+                --card-bg: #1f2937;
+                --text-main: #f3f4f6;
                 --text-muted: #6b7280;
                 --accent: #6366f1; /* Indigo */
                 --accent-light: #e0e7ff;
