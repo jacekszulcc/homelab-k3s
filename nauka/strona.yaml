@@ -19,6 +19,8 @@ data:
                 --text-muted: #6b7280;
                 --accent: #6366f1; /* Indigo */
                 --accent-light: #e0e7ff;
+                --unraid: #f97316; /* Orange for Unraid */
+                --unraid-light: #ffedd5;
                 --success: #10b981;
                 --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
                 --radius: 16px;
@@ -34,7 +36,7 @@ data:
             }
 
             .container {
-                max-width: 1000px;
+                max-width: 1200px; /* Zwiększyłem szerokość dla 3 kolumn */
                 margin: 0 auto;
                 display: grid;
                 grid-template-columns: 1fr;
@@ -48,6 +50,7 @@ data:
                 border-radius: var(--radius);
                 box-shadow: var(--shadow);
                 text-align: center;
+                background-image: linear-gradient(to right, #ffffff, #f9fafb);
             }
 
             .role-badge {
@@ -56,20 +59,20 @@ data:
                 padding: 6px 16px;
                 border-radius: 50px;
                 font-weight: 600;
-                font-size: 0.9rem;
+                font-size: 0.85rem;
                 text-transform: uppercase;
-                letter-spacing: 1px;
+                letter-spacing: 1.5px;
                 display: inline-block;
                 margin-bottom: 16px;
             }
 
-            h1 { margin: 0; font-size: 2.5rem; letter-spacing: -1px; }
-            .bio { color: var(--text-muted); max-width: 600px; margin: 16px auto 0; }
+            h1 { margin: 0; font-size: 2.5rem; letter-spacing: -1px; color: #111827; }
+            .bio { color: var(--text-muted); max-width: 700px; margin: 16px auto 0; font-size: 1.1rem;}
 
-            /* --- Grid Layout for Content --- */
+            /* --- Grid Layout --- */
             .bento-grid {
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
                 gap: 24px;
             }
 
@@ -78,37 +81,51 @@ data:
                 padding: 30px;
                 border-radius: var(--radius);
                 box-shadow: var(--shadow);
-                transition: transform 0.2s;
+                transition: transform 0.2s, box-shadow 0.2s;
+                height: 100%;
             }
             
-            .card:hover { transform: translateY(-3px); }
+            .card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
 
-            h2 { font-size: 1.25rem; margin-top: 0; display: flex; align-items: center; gap: 10px; }
-            h3 { font-size: 1rem; color: var(--text-muted); margin-bottom: 10px; margin-top: 20px; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px;}
+            h2 { font-size: 1.25rem; margin-top: 0; display: flex; align-items: center; gap: 10px; border-bottom: 2px solid #f3f4f6; padding-bottom: 15px; margin-bottom: 20px;}
+            h3 { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 12px; margin-top: 20px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700;}
 
             /* --- Live Infrastructure Visualization --- */
+            .infra-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 20px;
+            }
+
             .infra-box {
                 border: 1px solid #e5e7eb;
                 border-radius: 12px;
-                padding: 15px;
-                margin-bottom: 15px;
+                padding: 20px;
                 background: #fafafa;
+                position: relative;
+                overflow: hidden;
             }
+
+            .infra-box.proxmox { border-top: 4px solid var(--accent); }
+            .infra-box.unraid { border-top: 4px solid var(--unraid); background-color: #fff7ed; }
+
+            .box-title { font-weight: 700; display: block; font-size: 1.1rem; margin-bottom: 5px;}
+            .hw-spec { font-size: 0.85rem; color: var(--text-muted); display: block; margin-bottom: 15px; font-family: monospace;}
 
             .node-list { list-style: none; padding: 0; margin: 0; }
             .node-item {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                padding: 8px 0;
+                padding: 6px 0;
                 border-bottom: 1px solid #eee;
                 font-size: 0.9rem;
             }
             .node-item:last-child { border-bottom: none; }
 
             .status-indicator {
-                height: 10px;
-                width: 10px;
+                height: 8px;
+                width: 8px;
                 background-color: var(--success);
                 border-radius: 50%;
                 display: inline-block;
@@ -116,29 +133,32 @@ data:
                 animation: pulse 2s infinite;
             }
 
-            .hw-spec { font-size: 0.8rem; color: var(--text-muted); display: block; margin-top: 4px; }
-
-            /* --- Skills Tags --- */
-            .tags { display: flex; flex-wrap: wrap; gap: 10px; }
+            /* --- Skills & Containers Tags --- */
+            .tags { display: flex; flex-wrap: wrap; gap: 8px; }
             .tag {
                 background: #f3f4f6;
-                padding: 6px 14px;
-                border-radius: 8px;
-                font-size: 0.9rem;
+                padding: 4px 10px;
+                border-radius: 6px;
+                font-size: 0.85rem;
                 font-weight: 500;
-                border: 1px solid #e5e7eb;
+                color: #374151;
             }
+            .tag.highlight { background: var(--accent-light); color: var(--accent); }
+            .tag.unraid-tag { background: var(--unraid-light); color: #c2410c; }
 
             /* --- Footer --- */
             .footer {
                 text-align: center;
-                margin-top: 40px;
+                margin-top: 60px;
                 color: var(--text-muted);
                 font-size: 0.9rem;
+                border-top: 1px solid #e5e7eb;
+                padding-top: 20px;
             }
             .server-info {
                 margin-top: 10px;
                 font-family: monospace;
+                font-size: 0.8rem;
                 background: #e5e7eb;
                 padding: 4px 10px;
                 border-radius: 4px;
@@ -147,117 +167,141 @@ data:
 
             @keyframes pulse {
                 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-                70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+                70% { transform: scale(1); box-shadow: 0 0 0 4px rgba(16, 185, 129, 0); }
                 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
             }
 
-            @media (min-width: 768px) {
-                .container { grid-template-columns: 1fr; }
-                .bento-grid { grid-template-columns: 1fr 1fr; }
-                .full-width { grid-column: span 2; }
+            @media (min-width: 1024px) {
+                .full-width { grid-column: 1 / -1; }
             }
         </style>
     </head>
     <body>
 
     <div class="container">
-        <header class="header-card">
-            <span class="role-badge">Aspiring DevOps Engineer</span>
+        <header class="header-card full-width">
+            <span class="role-badge">DevOps Engineer Portfolio</span>
             <h1>Jacek Szulc</h1>
             <p class="bio">
-                Buduję skalowalną infrastrukturę w domowym laboratorium. 
-                Pasjonat konteneryzacji, automatyzacji i rozwiązań High Availability.
-                Ta strona jest serwowana z klastra K3s, który zaprojektowałem i wdrożyłem.
+                Projektuję i wdrażam skalowalne rozwiązania IT w środowisku hybrydowym. 
+                Łączę świat <strong>Kubernetes HA</strong> z solidnym storage opartym na <strong>Unraid</strong>.
+                Zwolennik podejścia GitOps i Infrastructure as Code.
             </p>
         </header>
 
-        <div class="bento-grid">
-            <article class="card full-width">
-                <h2>🖥️ Live Infrastructure Topology</h2>
-                <p style="margin-bottom: 20px; color: var(--text-muted);">
-                    Poniżej znajduje się wizualizacja aktualnie działającego klastra (Homelab), na którym hostowana jest ta witryna.
-                    Klaster działa w trybie High Availability (HA) na 2 fizycznych maszynach Lenovo.
-                </p>
+        <div class="card full-width">
+            <h2>🏢 Hybrid Home Data Center Topology</h2>
+            <div class="infra-container">
                 
-                <div class="bento-grid">
-                    <div class="infra-box">
-                        <strong>🏢 Physical Host: PVE1</strong>
-                        <span class="hw-spec">Lenovo M920q | i5-9500T | 32GB RAM</span>
-                        <h3>Hosted Nodes:</h3>
-                        <ul class="node-list">
-                            <li class="node-item">
-                                <span>🧠 k3s-server-01 (Master)</span>
-                                <span class="status-indicator" title="Online"></span>
-                            </li>
-                            <li class="node-item">
-                                <span>🧠 k3s-server-03 (Master)</span>
-                                <span class="status-indicator" title="Online"></span>
-                            </li>
-                            <li class="node-item">
-                                <span>👷 k3s-worker-02 (Worker)</span>
-                                <span class="status-indicator" title="Online"></span>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="infra-box proxmox">
+                    <span class="box-title">Node A: PVE1</span>
+                    <span class="hw-spec">Lenovo M920q | i5-8500T | 32GB</span>
+                    <h3>K3s Control Plane & Workers:</h3>
+                    <ul class="node-list">
+                        <li class="node-item">
+                            <span>🧠 k3s-server-01</span>
+                            <span class="status-indicator"></span>
+                        </li>
+                        <li class="node-item">
+                            <span>🧠 k3s-server-03</span>
+                            <span class="status-indicator"></span>
+                        </li>
+                        <li class="node-item">
+                            <span>👷 k3s-worker-02</span>
+                            <span class="status-indicator"></span>
+                        </li>
+                    </ul>
+                </div>
 
-                    <div class="infra-box">
-                        <strong>🏢 Physical Host: PVE2</strong>
-                        <span class="hw-spec">Lenovo M920q | i5-9500T | 32GB RAM</span>
-                        <h3>Hosted Nodes:</h3>
-                        <ul class="node-list">
-                            <li class="node-item">
-                                <span>🧠 k3s-server-02 (Master)</span>
-                                <span class="status-indicator" title="Online"></span>
-                            </li>
-                            <li class="node-item">
-                                <span>👷 k3s-worker-01 (Worker)</span>
-                                <span class="status-indicator" title="Online"></span>
-                            </li>
-                        </ul>
+                <div class="infra-box proxmox">
+                    <span class="box-title">Node B: PVE2</span>
+                    <span class="hw-spec">Lenovo M920q | i5-8500T | 32GB</span>
+                    <h3>K3s Control Plane & Workers:</h3>
+                    <ul class="node-list">
+                        <li class="node-item">
+                            <span>🧠 k3s-server-02</span>
+                            <span class="status-indicator"></span>
+                        </li>
+                        <li class="node-item">
+                            <span>👷 k3s-worker-01</span>
+                            <span class="status-indicator"></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="infra-box unraid">
+                    <span class="box-title">Storage: UNRAID</span>
+                    <span class="hw-spec">i5-10400 | 32GB RAM | ~16TB</span>
+                    <h3>Production Services (Docker):</h3>
+                    <div class="tags">
+                        <span class="tag unraid-tag">Nginx Proxy Mgr</span>
+                        <span class="tag unraid-tag">AdGuard Home</span>
+                        <span class="tag unraid-tag">Vaultwarden</span>
+                        <span class="tag unraid-tag">Home Assistant</span>
+                        <span class="tag unraid-tag">Arr Stack</span>
+                        <span class="tag unraid-tag">PostgreSQL</span>
                     </div>
                 </div>
-            </article>
 
+            </div>
+        </div>
+
+        <div class="bento-grid full-width">
             <article class="card">
-                <h2>🛠️ Tech Stack</h2>
-                <p>Narzędzia i technologie użyte do zbudowania tego środowiska:</p>
-                <h3>Virtualization & OS</h3>
+                <h2>🛠️ Tech Stack & Skills</h2>
+                
+                <h3>Orchestration & Virtualization</h3>
                 <div class="tags">
+                    <span class="tag highlight">Kubernetes (K3s)</span>
+                    <span class="tag highlight">Docker Compose</span>
                     <span class="tag">Proxmox VE</span>
-                    <span class="tag">Ubuntu Server 24.04</span>
-                    <span class="tag">Cloud-Init</span>
-                </div>
-                <h3>Container Orchestration</h3>
-                <div class="tags">
-                    <span class="tag">Kubernetes (K3s)</span>
-                    <span class="tag">Docker</span>
-                    <span class="tag">Containerd</span>
+                    <span class="tag">Unraid OS</span>
                     <span class="tag">Helm</span>
                 </div>
-                <h3>Management & Monitoring</h3>
+
+                <h3>Networking & Security</h3>
                 <div class="tags">
+                    <span class="tag">Cloudflare Tunnel</span>
+                    <span class="tag">Traefik</span>
+                    <span class="tag">Nginx Proxy Manager</span>
+                    <span class="tag">SSL/TLS</span>
+                    <span class="tag">DNS Management</span>
+                </div>
+
+                <h3>Tools & CI/CD</h3>
+                <div class="tags">
+                    <span class="tag">Git & GitHub</span>
                     <span class="tag">Portainer</span>
-                    <span class="tag">Traefik (Ingress)</span>
-                    <span class="tag">Linux Terminal</span>
+                    <span class="tag">Linux (Ubuntu/Debian)</span>
+                    <span class="tag">Visual Studio Code</span>
                 </div>
             </article>
 
             <article class="card">
-                <h2>🚀 Roadmap</h2>
-                <p>Aktualnie pracuję nad wdrożeniem:</p>
-                <ul style="padding-left: 20px; color: var(--text-muted);">
-                    <li><strong>GitOps:</strong> Automatyzacja wdrożeń przy użyciu ArgoCD.</li>
-                    <li><strong>Monitoring:</strong> Prometheus + Grafana do wizualizacji metryk sprzętowych.</li>
-                    <li><strong>Storage:</strong> Wdrożenie Longhorn dla trwałego zapisu danych.</li>
-                    <li><strong>Home Automation:</strong> Migracja Home Assistant do klastra.</li>
+                <h2>🚀 Current Focus & Roadmap</h2>
+                <p>Ciągły rozwój infrastruktury w oparciu o najlepsze praktyki rynkowe.</p>
+                
+                <ul class="node-list" style="margin-top: 20px;">
+                    <li class="node-item">
+                        <span><strong>GitOps Implementation</strong> (ArgoCD)</span>
+                        <span style="font-size: 0.8rem; color: #f59e0b;">In Progress</span>
+                    </li>
+                    <li class="node-item">
+                        <span><strong>Monitoring Stack</strong> (Prometheus/Grafana)</span>
+                        <span style="font-size: 0.8rem; color: #6b7280;">Planned</span>
+                    </li>
+                    <li class="node-item">
+                        <span><strong>Backup Strategy</strong> (Velero / Kasten)</span>
+                        <span style="font-size: 0.8rem; color: #6b7280;">Planned</span>
+                    </li>
                 </ul>
             </article>
         </div>
 
         <footer class="footer">
             <p>Jacek Szulc &copy; 2025</p>
-            <p>Skontaktuj się: <a href="mailto:jacek@szulc.cc" style="color: var(--accent);">jacek@szulc.cc</a></p>
-            <div class="server-info">Powered by Nginx on K3s</div>
+            <p>Projekt hostowany na własnym klastrze K3s | Wystawiony przez Cloudflare Tunnel</p>
+            <div class="server-info">v2.0 • Hybrid Infra Edition</div>
         </footer>
     </div>
 
