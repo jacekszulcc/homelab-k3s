@@ -1,0 +1,265 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: moja-strona-html
+  namespace: nauka
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jacek | DevOps Engineer Portfolio</title>
+        <style>
+            :root {
+                --bg-color: #f3f4f6;
+                --card-bg: #ffffff;
+                --text-main: #1f2937;
+                --text-muted: #6b7280;
+                --accent: #6366f1; /* Indigo */
+                --accent-light: #e0e7ff;
+                --success: #10b981;
+                --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+                --radius: 16px;
+            }
+
+            body {
+                background-color: var(--bg-color);
+                font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+                color: var(--text-main);
+                margin: 0;
+                padding: 40px 20px;
+                line-height: 1.6;
+            }
+
+            .container {
+                max-width: 1000px;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            /* --- Header Section --- */
+            .header-card {
+                background: var(--card-bg);
+                padding: 40px;
+                border-radius: var(--radius);
+                box-shadow: var(--shadow);
+                text-align: center;
+            }
+
+            .role-badge {
+                background-color: var(--accent-light);
+                color: var(--accent);
+                padding: 6px 16px;
+                border-radius: 50px;
+                font-weight: 600;
+                font-size: 0.9rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                display: inline-block;
+                margin-bottom: 16px;
+            }
+
+            h1 { margin: 0; font-size: 2.5rem; letter-spacing: -1px; }
+            .bio { color: var(--text-muted); max-width: 600px; margin: 16px auto 0; }
+
+            /* --- Grid Layout for Content --- */
+            .bento-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 24px;
+            }
+
+            .card {
+                background: var(--card-bg);
+                padding: 30px;
+                border-radius: var(--radius);
+                box-shadow: var(--shadow);
+                transition: transform 0.2s;
+            }
+            
+            .card:hover { transform: translateY(-3px); }
+
+            h2 { font-size: 1.25rem; margin-top: 0; display: flex; align-items: center; gap: 10px; }
+            h3 { font-size: 1rem; color: var(--text-muted); margin-bottom: 10px; margin-top: 20px; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px;}
+
+            /* --- Live Infrastructure Visualization --- */
+            .infra-box {
+                border: 1px solid #e5e7eb;
+                border-radius: 12px;
+                padding: 15px;
+                margin-bottom: 15px;
+                background: #fafafa;
+            }
+
+            .node-list { list-style: none; padding: 0; margin: 0; }
+            .node-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 8px 0;
+                border-bottom: 1px solid #eee;
+                font-size: 0.9rem;
+            }
+            .node-item:last-child { border-bottom: none; }
+
+            .status-indicator {
+                height: 10px;
+                width: 10px;
+                background-color: var(--success);
+                border-radius: 50%;
+                display: inline-block;
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+                animation: pulse 2s infinite;
+            }
+
+            .hw-spec { font-size: 0.8rem; color: var(--text-muted); display: block; margin-top: 4px; }
+
+            /* --- Skills Tags --- */
+            .tags { display: flex; flex-wrap: wrap; gap: 10px; }
+            .tag {
+                background: #f3f4f6;
+                padding: 6px 14px;
+                border-radius: 8px;
+                font-size: 0.9rem;
+                font-weight: 500;
+                border: 1px solid #e5e7eb;
+            }
+
+            /* --- Footer --- */
+            .footer {
+                text-align: center;
+                margin-top: 40px;
+                color: var(--text-muted);
+                font-size: 0.9rem;
+            }
+            .server-info {
+                margin-top: 10px;
+                font-family: monospace;
+                background: #e5e7eb;
+                padding: 4px 10px;
+                border-radius: 4px;
+                display: inline-block;
+            }
+
+            @keyframes pulse {
+                0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+                70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+                100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+            }
+
+            @media (min-width: 768px) {
+                .container { grid-template-columns: 1fr; }
+                .bento-grid { grid-template-columns: 1fr 1fr; }
+                .full-width { grid-column: span 2; }
+            }
+        </style>
+    </head>
+    <body>
+
+    <div class="container">
+        <header class="header-card">
+            <span class="role-badge">Aspiring DevOps Engineer</span>
+            <h1>Jacek Szulc</h1>
+            <p class="bio">
+                Buduję skalowalną infrastrukturę w domowym laboratorium. 
+                Pasjonat konteneryzacji, automatyzacji i rozwiązań High Availability.
+                Ta strona jest serwowana z klastra K3s, który zaprojektowałem i wdrożyłem.
+            </p>
+        </header>
+
+        <div class="bento-grid">
+            <article class="card full-width">
+                <h2>🖥️ Live Infrastructure Topology</h2>
+                <p style="margin-bottom: 20px; color: var(--text-muted);">
+                    Poniżej znajduje się wizualizacja aktualnie działającego klastra (Homelab), na którym hostowana jest ta witryna.
+                    Klaster działa w trybie High Availability (HA) na 2 fizycznych maszynach Lenovo.
+                </p>
+                
+                <div class="bento-grid">
+                    <div class="infra-box">
+                        <strong>🏢 Physical Host: PVE1</strong>
+                        <span class="hw-spec">Lenovo M920q | i5-9500T | 32GB RAM</span>
+                        <h3>Hosted Nodes:</h3>
+                        <ul class="node-list">
+                            <li class="node-item">
+                                <span>🧠 k3s-server-01 (Master)</span>
+                                <span class="status-indicator" title="Online"></span>
+                            </li>
+                            <li class="node-item">
+                                <span>🧠 k3s-server-03 (Master)</span>
+                                <span class="status-indicator" title="Online"></span>
+                            </li>
+                            <li class="node-item">
+                                <span>👷 k3s-worker-02 (Worker)</span>
+                                <span class="status-indicator" title="Online"></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="infra-box">
+                        <strong>🏢 Physical Host: PVE2</strong>
+                        <span class="hw-spec">Lenovo M920q | i5-9500T | 32GB RAM</span>
+                        <h3>Hosted Nodes:</h3>
+                        <ul class="node-list">
+                            <li class="node-item">
+                                <span>🧠 k3s-server-02 (Master)</span>
+                                <span class="status-indicator" title="Online"></span>
+                            </li>
+                            <li class="node-item">
+                                <span>👷 k3s-worker-01 (Worker)</span>
+                                <span class="status-indicator" title="Online"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card">
+                <h2>🛠️ Tech Stack</h2>
+                <p>Narzędzia i technologie użyte do zbudowania tego środowiska:</p>
+                <h3>Virtualization & OS</h3>
+                <div class="tags">
+                    <span class="tag">Proxmox VE</span>
+                    <span class="tag">Ubuntu Server 24.04</span>
+                    <span class="tag">Cloud-Init</span>
+                </div>
+                <h3>Container Orchestration</h3>
+                <div class="tags">
+                    <span class="tag">Kubernetes (K3s)</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">Containerd</span>
+                    <span class="tag">Helm</span>
+                </div>
+                <h3>Management & Monitoring</h3>
+                <div class="tags">
+                    <span class="tag">Portainer</span>
+                    <span class="tag">Traefik (Ingress)</span>
+                    <span class="tag">Linux Terminal</span>
+                </div>
+            </article>
+
+            <article class="card">
+                <h2>🚀 Roadmap</h2>
+                <p>Aktualnie pracuję nad wdrożeniem:</p>
+                <ul style="padding-left: 20px; color: var(--text-muted);">
+                    <li><strong>GitOps:</strong> Automatyzacja wdrożeń przy użyciu ArgoCD.</li>
+                    <li><strong>Monitoring:</strong> Prometheus + Grafana do wizualizacji metryk sprzętowych.</li>
+                    <li><strong>Storage:</strong> Wdrożenie Longhorn dla trwałego zapisu danych.</li>
+                    <li><strong>Home Automation:</strong> Migracja Home Assistant do klastra.</li>
+                </ul>
+            </article>
+        </div>
+
+        <footer class="footer">
+            <p>Jacek Szulc &copy; 2025</p>
+            <p>Skontaktuj się: <a href="mailto:jacek@szulc.cc" style="color: var(--accent);">jacek@szulc.cc</a></p>
+            <div class="server-info">Powered by Nginx on K3s</div>
+        </footer>
+    </div>
+
+    </body>
+    </html>
