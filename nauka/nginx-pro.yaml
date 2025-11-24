@@ -10,6 +10,8 @@ kind: Deployment
 metadata:
   name: nginx-pro
   namespace: nauka
+  annotations:
+    reloader.stakater.com/auto: "true"
 spec:
   replicas: 5 
   selector:
