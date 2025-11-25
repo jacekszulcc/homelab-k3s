@@ -195,7 +195,7 @@ data:
                 
                 <div class="infra-box proxmox">
                     <span class="box-title">Node A: PVE1</span>
-                    <span class="hw-spec">Lenovo M920q | i5-8500T | 32GB</span>
+                    <span class="hw-spec">Lenovo M920q | i5-9500T | 32GB</span>
                     <h3>K3s Control Plane & Workers:</h3>
                     <ul class="node-list">
                         <li class="node-item">
@@ -215,7 +215,7 @@ data:
 
                 <div class="infra-box proxmox">
                     <span class="box-title">Node B: PVE2</span>
-                    <span class="hw-spec">Lenovo M920q | i5-8500T | 32GB</span>
+                    <span class="hw-spec">Lenovo M920q | i5-9500T | 32GB</span>
                     <h3>K3s Control Plane & Workers:</h3>
                     <ul class="node-list">
                         <li class="node-item">
@@ -298,12 +298,34 @@ data:
             </article>
         </div>
 
-        <footer class="footer">
-            <p>Jacek Szulc &copy; 2025</p>
-            <p>Projekt hostowany na własnym klastrze K3s | Wystawiony przez Cloudflare Tunnel</p>
-            <div class="server-info">v2.0 • Hybrid Infra Edition</div>
-        </footer>
-    </div>
+        <div class="card full-width" style="margin-top: 24px;">
+            <h2>📊 Live Cluster Telemetry</h2>
+            <p style="margin-bottom: 20px; color: var(--text-muted);">
+                Dane pobierane w czasie rzeczywistym z instancji Grafana działającej na klastrze.
+            </p>
+
+	        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; justify-items: center;">
+                <div style="width: 100%; max-width: 550px; height: 260px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid #f3f4f6;">
+                    <iframe
+                        src="http://grafana.szulc.cc/d-solo/7d57716318ee0dddbac5a7f451fb7753/node-exporter-nodes?orgId=1&from=1764087213096&to=1764090813096&timezone=utc&var-datasource=prometheus&var-cluster=&var-instance=192.168.50.101:9100&refresh=5s&theme=light&panelId=panel-2&__feature.dashboardSceneSolo=true"
+                        width="100%"
+                        height="100%"
+                        frameborder="0"
+                        style="border: none;">
+                    </iframe>
+                </div>
+
+                <div style="width: 100%; max-width: 550px; height: 260px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid #f3f4f6;">
+                    <iframe
+                        src="http://grafana.szulc.cc/d-solo/7d57716318ee0dddbac5a7f451fb7753/node-exporter-nodes?orgId=1&from=1764087303095&to=1764090903095&timezone=utc&var-datasource=prometheus&var-cluster=&var-instance=192.168.50.101:9100&refresh=5s&theme=light&panelId=panel-5&__feature.dashboardSceneSolo=true"
+                        width="100%"
+                        height="100%"
+                        frameborder="0"
+                        style="border: none;">
+                    </iframe>
+                </div>
+            </div>
+        </div>
 
     </body>
     </html>
