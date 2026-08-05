@@ -23,7 +23,7 @@ spec:
         - --no-autoupdate
         - run
         - --token
-        - eyJhIjoiMjQ3OWQxMzNkMGM2YzRiOWE5NGI0ZDRlNzcxMzJiMTQiLCJ0IjoiMWQ4NTg1ZGQtYWZiOS00NDkzLWIxYTItMmY5YTJkZTZjN2ZkIiwicyI6IlpUYzFOV1psTkdFdE5tWmtOQzAwWXpKbExXRTFOVEV0TmpsaVpHVXhZV0UyWWpFMCJ9
+        - <CLOUDFLARE_TUNNEL_TOKEN>
         resources:
           requests:
             cpu: 10m

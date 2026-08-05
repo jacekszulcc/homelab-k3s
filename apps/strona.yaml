@@ -195,7 +195,7 @@ data:
                 
                 <div class="infra-box proxmox">
                     <span class="box-title">Node A: PVE1</span>
-                    <span class="hw-spec">Lenovo M920q | i5-9500T | 32GB</span>
+                    <span class="hw-spec">Lenovo M920q | Intel Core i5 T-series | 32GB</span>
                     <h3>K3s Control Plane & Workers:</h3>
                     <ul class="node-list">
                         <li class="node-item">
@@ -215,7 +215,7 @@ data:
 
                 <div class="infra-box proxmox">
                     <span class="box-title">Node B: PVE2</span>
-                    <span class="hw-spec">Lenovo M920q | i5-9500T | 32GB</span>
+                    <span class="hw-spec">Lenovo M920q | Intel Core i5 T-series | 32GB</span>
                     <h3>K3s Control Plane & Workers:</h3>
                     <ul class="node-list">
                         <li class="node-item">

@@ -1,3 +1,4 @@
 .kube/
 *.log
 .DS_Store
+*.kate-swp
