@@ -1,3 +1,14 @@
+# Archived snapshot, November 2025. Nothing here is live.
+#
+# The HTML below describes the K3s cluster in the present tense: green "online"
+# indicators next to each node, ArgoCD marked "In Progress", and embedded Grafana
+# panels pulling from the cluster. That was accurate while this page was being
+# served. The cluster has since been decommissioned, so the node indicators, the
+# Grafana iframes and the roadmap items no longer reflect anything that runs.
+#
+# The file is kept unchanged as a record of what the page looked like.
+# See README.md for the current state of the project.
+
 apiVersion: v1
 kind: ConfigMap
 metadata:
