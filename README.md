@@ -12,6 +12,8 @@
 
 This repository held the configuration for a self-hosted **Kubernetes (K3s)** cluster running in **High Availability** mode on bare-metal hardware under Proxmox VE, alongside an **Unraid** storage server. The goal was to learn Cloud Native tooling by running it on real hardware rather than in a managed environment.
 
+The **Unraid** server described below under Storage & Utility Layer is a separate machine from the cluster, and it is still in service today: it hosts a self-hosted **n8n** instance that runs my automation workflows. Only the K3s cluster was decommissioned. The ThinkCentre nodes that hosted it went to other tasks, and the automation workloads never ran on them.
+
 ---
 
 ## Architecture Overview
@@ -157,7 +159,7 @@ The project was wound down before these were taken further.
 
 The cluster was decommissioned deliberately, not abandoned. It had served its purpose as a learning environment, and the two ThinkCentre nodes were more useful assigned to other work than kept running an idle Kubernetes control plane.
 
-The Unraid server is still in service and still hosts the workloads listed above, including a self-hosted **n8n** instance used for automation.
+The Unraid server is still in service and continues to host the workloads listed above.
 
 ---
 
